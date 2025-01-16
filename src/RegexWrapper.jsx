@@ -10,6 +10,7 @@ function RegexInput({ pattern, flags, error, onRegexUpdate, onFlagUpdate }) {
           type="text"
           name="regex-pattern"
           value={pattern}
+          aria-label="Regex pattern"
           style={{ color: error ? 'red' : 'unset' }}
           onChange={(e) => {
             onRegexUpdate(e.target.value);
@@ -28,6 +29,8 @@ function FlagOption({ flags, flag, label, onFlagUpdate }) {
         type="checkbox"
         name="flags"
         value={flag}
+        aria-label={`Flag ${label}`}
+        tabIndex={0}
         checked={flags.includes(flag)}
         onChange={(e) => {
           const newFlags = new Set(flags);
@@ -54,7 +57,7 @@ function FlagsInput({ flags, onFlagUpdate }) {
   ];
   return (
     <div className="dropdown">
-      <button>Flags</button>
+      <button aria-label="Flags">Flags</button>
       <div className="dropdown-content">
         {FLAGS.map((flag) => {
           return (
@@ -78,6 +81,7 @@ function TestString({ testString, onTestStringUpdate }) {
     <div className="regex-test-string">
       <textarea
         value={testString}
+        aria-label="Test String"
         onChange={(e) => onTestStringUpdate(e.target.value)}
       ></textarea>
     </div>
@@ -87,7 +91,7 @@ function TestString({ testString, onTestStringUpdate }) {
 function RegexResult({ result }) {
   if (!result || result.length === 0) return null;
   return (
-    <div className="regex-result">
+    <div className="regex-result" aria-label="Regex matches">
       {result.map((res, i) => (
         <span key={i}>{res}</span>
       ))}
@@ -152,7 +156,11 @@ export default function RegexWrapper() {
         res.push(prev);
       }
       res.push(
-        <span style={{ backgroundColor: 'yellow', color: 'black' }}>
+        <span
+          aria-label={match[0]}
+          tabIndex="0"
+          style={{ backgroundColor: 'yellow', color: 'black' }}
+        >
           {match[0]}
         </span>
       );
