@@ -21,20 +21,55 @@ function RegexInput({ pattern, flags, error, onRegexUpdate, onFlagUpdate }) {
   );
 }
 
-function FlagsInput({ flags, onFlagUpdate }) {
+function FlagOption({ flags, flag, label, onFlagUpdate }) {
   return (
-    <>
-      <label>
-        Flags
-        <select name="flags" id="flags" multiple>
-          <option value="g">global</option>
-          <option value="i">case insensitive</option>
-          <option value="s">single line</option>
-          <option value="u">unicode</option>
-          <option value="y">sticky</option>
-        </select>
-      </label>
-    </>
+    <label>
+      <input
+        type="checkbox"
+        name="flags"
+        value={flag}
+        checked={flags.includes(flag)}
+        onChange={(e) => {
+          const newFlags = new Set(flags);
+          if (e.target.checked) {
+            newFlags.add(flag);
+          } else {
+            newFlags.delete(flag);
+          }
+          onFlagUpdate(String([...newFlags].join('')));
+        }}
+      />{' '}
+      {label}
+    </label>
+  );
+}
+
+function FlagsInput({ flags, onFlagUpdate }) {
+  const FLAGS = [
+    { label: 'global', flag: 'g' },
+    { label: 'case insensitive', flag: 'i' },
+    { label: 'single line', flag: 's' },
+    { label: 'unicode', flag: 'u' },
+    { label: 'sticky', flag: 'y' },
+  ];
+  return (
+    <div className="dropdown">
+      <button>Flags</button>
+      <div className="dropdown-content">
+        {FLAGS.map((flag) => {
+          return (
+            <div key={flag.label}>
+              <FlagOption
+                flags={flags}
+                flag={flag.flag}
+                label={flag.label}
+                onFlagUpdate={onFlagUpdate}
+              />
+            </div>
+          );
+        })}
+      </div>
+    </div>
   );
 }
 
@@ -81,10 +116,7 @@ export default function RegexWrapper() {
   const [pattern, setPattern] = useState('[A-Z]');
   const [flags, setFlags] = useState('g');
   const [testString, setTestString] = useState(
-    `This is a stripped down version of RegExr.com, crafted by Jennifer Suratna following a humbling and insightful interview experience.
-
-Currently, it supports only basic regex patterns with the global flag and a test string.
-`
+    `This is a simplified version of RegExr.com, developed by Jennifer Suratna. You can modify the text or regex pattern and select any combination of flags.`
   );
   const [result, setResult] = useState(null);
 
