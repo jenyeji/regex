@@ -47,11 +47,13 @@ function TestString({ testString, onTestStringUpdate }) {
 }
 
 function RegexResult({ result }) {
+  if (!result || result.length === 0) return null;
   return (
-    <div
-      className="regex-result"
-      dangerouslySetInnerHTML={{ __html: result }}
-    ></div>
+    <div className="regex-result">
+      {result.map((res, i) => (
+        <span key={i}>{res}</span>
+      ))}
+    </div>
   );
 }
 
@@ -68,8 +70,8 @@ Currently, it supports only basic regex patterns with the global flag and a test
   const [result, setResult] = useState(null);
 
   useEffect(() => {
-    const str = getResult(pattern, testString, flags);
-    setResult(str);
+    const res = getResult(pattern, testString, flags);
+    setResult(res);
   }, [pattern, flags, testString]);
 
   function getMatches(regex, text, options) {
@@ -86,20 +88,24 @@ Currently, it supports only basic regex patterns with the global flag and a test
 
   function getResult(regex, text, options) {
     const matches = getMatches(regex, text, options);
-    let res = '';
+    let res = [];
     let index = 0;
     for (const match of matches) {
       const startIndex = match.index;
       const endIndex = startIndex + match[0].length;
       if (index < startIndex) {
         const prev = testString.substring(index, startIndex);
-        res += prev;
+        res.push(prev);
       }
-      res += `<span style='color: black; background-color: yellow'>${match[0]}</span>`;
+      res.push(
+        <span style={{ backgroundColor: 'yellow', color: 'black' }}>
+          {match[0]}
+        </span>
+      );
       index = endIndex;
     }
     if (index < text.length) {
-      res += text.substring(index);
+      res.push(text.substring(index));
     }
     return res;
   }
