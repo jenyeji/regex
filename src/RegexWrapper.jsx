@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-function RegexInput({ pattern, flags, onRegexUpdate, onFlagUpdate }) {
+function RegexInput({ pattern, flags, error, onRegexUpdate, onFlagUpdate }) {
   return (
     <div className="regex-input">
       <label>
@@ -10,10 +10,13 @@ function RegexInput({ pattern, flags, onRegexUpdate, onFlagUpdate }) {
           type="text"
           name="regex-pattern"
           value={pattern}
-          onChange={(e) => onRegexUpdate(e.target.value)}
+          style={{ color: error ? 'red' : 'unset' }}
+          onChange={(e) => {
+            onRegexUpdate(e.target.value);
+          }}
         />
       </label>
-      {/* <FlagsInput flags={flags} onFlagUpdate={onFlagUpdate} /> */}
+      <FlagsInput flags={flags} onFlagUpdate={onFlagUpdate} />
     </div>
   );
 }
@@ -76,12 +79,12 @@ Currently, it supports only basic regex patterns with the global flag and a test
 
   function getMatches(regex, text, options) {
     try {
+      setError(null);
       const re = new RegExp(regex, options);
       const matches = text.matchAll(re);
-      setError(null);
       return [...matches];
     } catch (err) {
-      setError(err);
+      setError(err.message);
       return [];
     }
   }
@@ -115,6 +118,7 @@ Currently, it supports only basic regex patterns with the global flag and a test
       <RegexInput
         pattern={pattern}
         flags={flags}
+        error={error}
         onRegexUpdate={setPattern}
         onFlagUpdate={setFlags}
       />
