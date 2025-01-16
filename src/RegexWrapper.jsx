@@ -1,103 +1,7 @@
 import { useState, useEffect } from 'react';
-
-function RegexInput({ pattern, flags, error, onRegexUpdate, onFlagUpdate }) {
-  return (
-    <div className="regex-input">
-      <label>
-        {' '}
-        Regex Pattern{' '}
-        <input
-          type="text"
-          name="regex-pattern"
-          value={pattern}
-          aria-label="Regex pattern"
-          style={{ color: error ? 'red' : 'unset' }}
-          onChange={(e) => {
-            onRegexUpdate(e.target.value);
-          }}
-        />
-      </label>
-      <FlagsInput flags={flags} onFlagUpdate={onFlagUpdate} />
-    </div>
-  );
-}
-
-function FlagOption({ flags, flag, label, onFlagUpdate }) {
-  return (
-    <label>
-      <input
-        type="checkbox"
-        name="flags"
-        value={flag}
-        aria-label={`Flag ${label}`}
-        tabIndex={0}
-        checked={flags.includes(flag)}
-        onChange={(e) => {
-          const newFlags = new Set(flags);
-          if (e.target.checked) {
-            newFlags.add(flag);
-          } else {
-            newFlags.delete(flag);
-          }
-          onFlagUpdate(String([...newFlags].join('')));
-        }}
-      />{' '}
-      {label}
-    </label>
-  );
-}
-
-function FlagsInput({ flags, onFlagUpdate }) {
-  const FLAGS = [
-    { label: 'global', flag: 'g' },
-    { label: 'case insensitive', flag: 'i' },
-    { label: 'single line', flag: 's' },
-    { label: 'unicode', flag: 'u' },
-    { label: 'sticky', flag: 'y' },
-  ];
-  return (
-    <div className="dropdown">
-      <button aria-label="Flags">Flags</button>
-      <div className="dropdown-content">
-        {FLAGS.map((flag) => {
-          return (
-            <div key={flag.label}>
-              <FlagOption
-                flags={flags}
-                flag={flag.flag}
-                label={flag.label}
-                onFlagUpdate={onFlagUpdate}
-              />
-            </div>
-          );
-        })}
-      </div>
-    </div>
-  );
-}
-
-function TestString({ testString, onTestStringUpdate }) {
-  return (
-    <div className="regex-test-string">
-      <textarea
-        value={testString}
-        aria-label="Test String"
-        onChange={(e) => onTestStringUpdate(e.target.value)}
-      ></textarea>
-    </div>
-  );
-}
-
-function RegexResult({ result }) {
-  if (!result || result.length === 0) return null;
-  return (
-    <div className="regex-result" aria-label="Regex matches">
-      {result.map((res, i) => (
-        <span key={i}>{res}</span>
-      ))}
-    </div>
-  );
-}
+import RegexInput from './RegexInput';
+import RegexResult from './RegexResult';
+import RegexTestString from './RegexTestString';
 
 function useDebounce(value, delay) {
   const [debouncedValue, setDebouncedValue] = useState(value);
@@ -181,7 +85,10 @@ export default function RegexWrapper() {
         onRegexUpdate={setPattern}
         onFlagUpdate={setFlags}
       />
-      <TestString testString={testString} onTestStringUpdate={setTestString} />
+      <RegexTestString
+        testString={testString}
+        onTestStringUpdate={setTestString}
+      />
       <RegexResult result={result} />
     </div>
   );
