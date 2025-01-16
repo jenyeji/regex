@@ -33,9 +33,11 @@ select:focus {
 }
 
 .regex-wrapper {
-  display: block;
+  display: flex;
+  flex-direction: column;
   border: 1px solid gray;
   padding: 24px;
+  max-height: 80vh;
 }
 
 .regex-input {
@@ -52,6 +54,7 @@ select:focus {
   text-align: left;
   border: 1px solid gray;
   padding: 8px;
+  overflow: scroll;
 }
 
 .regex-list-result {
