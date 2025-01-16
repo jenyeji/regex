@@ -31,6 +31,7 @@ function FlagsInput({ flags, onFlagUpdate }) {
     { label: 'unicode', flag: 'u' },
     { label: 'sticky', flag: 'y' },
   ];
+
   return (
     <div className="dropdown">
       <button aria-label="Flags">Flags</button>
