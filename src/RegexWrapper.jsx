@@ -60,13 +60,9 @@ export default function RegexWrapper() {
   const [pattern, setPattern] = useState('[A-Z]');
   const [flags, setFlags] = useState('g');
   const [testString, setTestString] = useState(
-    `RegExr was created by gskinner.com.
+    `This is a stripped down version of RegExr.com, crafted by Jennifer Suratna following a humbling and insightful interview experience.
 
-Edit the Expression & Text to see matches. Roll over matches or the expression for details. PCRE & JavaScript flavors of RegEx are supported. Validate your expression with Tests mode.
-
-The side bar includes a Cheatsheet, full Reference, and Help. You can also Save & Share with the Community and view patterns you create or favorite in My Patterns.
-
-Explore results with the Tools below. Replace & List output custom results. Details lists capture groups. Explain describes your expression in plain English.
+Currently, it supports only basic regex patterns with the global flag and a test string.
 `
   );
   const [result, setResult] = useState(null);
