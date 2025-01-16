@@ -60,6 +60,22 @@ function RegexResult({ result }) {
   );
 }
 
+function useDebounce(value, delay) {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+}
+
 export default function RegexWrapper() {
   const [error, setError] = useState(null);
   const [pattern, setPattern] = useState('[A-Z]');
@@ -72,10 +88,13 @@ Currently, it supports only basic regex patterns with the global flag and a test
   );
   const [result, setResult] = useState(null);
 
+  const debouncedPattern = useDebounce(pattern, 300);
+  const debouncedTestString = useDebounce(testString, 300);
+
   useEffect(() => {
-    const res = getResult(pattern, testString, flags);
+    const res = getResult(debouncedPattern, debouncedTestString, flags);
     setResult(res);
-  }, [pattern, flags, testString]);
+  }, [debouncedPattern, debouncedTestString, flags]);
 
   function getMatches(regex, text, options) {
     try {
