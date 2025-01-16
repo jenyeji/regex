@@ -55,24 +55,35 @@ export default function RegexWrapper() {
     for (const match of matches) {
       const startIndex = match.index;
       const endIndex = startIndex + match[0].length;
+
       if (index < startIndex) {
         const prev = testString.substring(index, startIndex);
         res.push(prev);
       }
+
+      const info = {
+        match: match[0],
+        start: startIndex,
+        end: endIndex - 1,
+      };
+
       res.push(
         <span
-          aria-label={match[0]}
           tabIndex="0"
+          id={JSON.stringify(info)}
           style={{ backgroundColor: 'yellow', color: 'black' }}
         >
           {match[0]}
         </span>
       );
+
       index = endIndex;
     }
+
     if (index < text.length) {
       res.push(text.substring(index));
     }
+
     return res;
   }
 
