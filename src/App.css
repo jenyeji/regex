@@ -6,7 +6,11 @@
   width: 100%;
   background-color: #242424;
   color: white;
-  color-scheme: only dark;
+}
+
+button {
+  background-color: rgb(26, 25, 25);
+  color: white;
 }
 
 textarea {
