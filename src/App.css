@@ -1,0 +1,55 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+textarea {
+  min-height: 250px;
+  height: fit-content;
+  width: 100%;
+  text-align: left;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+select {
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+}
+
+select:focus {
+  outline: none;
+}
+
+.regex-wrapper {
+  border: 1px solid white;
+  padding: 24px;
+}
+
+.regex-input {
+  display: flex;
+  text-align: left;
+  justify-content: space-between;
+}
+
+.regex-test-string {
+  margin: 12px 0;
+}
+
+.regex-result {
+  text-align: left;
+  border: 1px solid gray;
+  padding: 8px;
+}
+
+.regex-list-result {
+  text-align: left;
+  border: 1px solid gray;
+  padding: 8px;
+  margin-top: 18px;
+  height: 200px;
+  overflow: scroll;
+}
