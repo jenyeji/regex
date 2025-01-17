@@ -12,8 +12,8 @@ import {
 import RegexInput from './RegexInput';
 import RegexResult from './RegexResult';
 import RegexTestString from './RegexTestString';
+import RegexShare from './RegexShare';
 import useDebounce from '../hooks/useDebounce';
-import LZString from 'lz-string';
 
 export default function RegexWrapper() {
   const dispatch = useDispatch();
@@ -97,32 +97,14 @@ export default function RegexWrapper() {
         onTestStringUpdate={(val) => dispatch(updateTestString(val))}
       />
       <RegexResult result={result} />
-      <div className="share">
-        <button
-          aria-label="Share this page"
-          onClick={() => {
-            const data = {
-              pattern,
-              flags,
-              testString,
-            };
-            const compressedData = encodeURIComponent(
-              LZString.compressToBase64(JSON.stringify(data))
-            );
-            dispatch(setShareUrl(compressedData));
-          }}
-        >
-          Share
-        </button>
-        {shareUrl && (
-          <div className="share-url">
-            Shared URL:{' '}
-            <a href={`${window.location.origin}?json=${shareUrl}`}>
-              {`${window.location.origin}?json=${shareUrl}`}
-            </a>
-          </div>
-        )}
-      </div>
+      <RegexShare
+        shareUrl={shareUrl}
+        pattern={pattern}
+        testString={testString}
+        flags={flags}
+        origin={window.location.origin}
+        onShare={(val) => dispatch(setShareUrl(val))}
+      />
     </div>
   );
 }
