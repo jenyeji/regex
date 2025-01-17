@@ -1,5 +1,5 @@
 import './App.css';
-import RegexWrapper from './RegexWrapper';
+import RegexWrapper from './components/RegexWrapper';
 
 function App() {
   return (

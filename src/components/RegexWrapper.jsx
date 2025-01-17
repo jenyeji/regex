@@ -2,22 +2,7 @@ import { useState, useEffect } from 'react';
 import RegexInput from './RegexInput';
 import RegexResult from './RegexResult';
 import RegexTestString from './RegexTestString';
-
-function useDebounce(value, delay) {
-  const [debouncedValue, setDebouncedValue] = useState(value);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setDebouncedValue(value);
-    }, delay);
-
-    return () => {
-      clearTimeout(timer);
-    };
-  }, [value, delay]);
-
-  return debouncedValue;
-}
+import useDebounce from '../hooks/useDebounce';
 
 export default function RegexWrapper() {
   const [error, setError] = useState(null);
