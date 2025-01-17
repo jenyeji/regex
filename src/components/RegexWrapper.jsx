@@ -36,7 +36,7 @@ export default function RegexWrapper() {
     if (json) {
       dispatch(decodeRegexState(json));
     }
-  }, [dispatch]);
+  }, []);
 
   function getMatches(regex, text, options) {
     try {
