@@ -14,6 +14,4 @@ Link to prod: https://regex-seven-opal.vercel.app/
 ## TODO
 
 - Virtualization
-- Redux
 - Save
-- Share URL
