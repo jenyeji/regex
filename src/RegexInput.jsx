@@ -11,7 +11,7 @@ function RegexInput({ pattern, flags, error, onRegexUpdate, onFlagUpdate }) {
           name="regex-pattern"
           value={pattern}
           aria-label="Regex pattern"
-          style={{ color: error ? 'red' : 'white' }}
+          style={{ color: error ? 'red' : 'black' }}
           onChange={(e) => {
             onRegexUpdate(e.target.value);
           }}
