@@ -93,3 +93,18 @@ select:focus {
 .dropdown:hover .dropdown-content {
   display: block;
 }
+
+.share {
+  margin-top: 12px;
+  text-align: left;
+}
+
+.share-url {
+  padding: 12px;
+  word-wrap: break-word;
+  font-size: small;
+}
+
+.share-url a {
+  color: lightblue;
+}
