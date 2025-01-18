@@ -10,7 +10,6 @@ function RegexInput({ pattern, flags, error, onRegexUpdate, onFlagUpdate }) {
           type="text"
           name="regex-pattern"
           value={pattern}
-          aria-label="Regex pattern"
           style={{ color: error ? 'red' : 'black' }}
           onChange={(e) => {
             onRegexUpdate(e.target.value);

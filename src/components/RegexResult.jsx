@@ -1,7 +1,7 @@
 function RegexResult({ result }) {
   if (!result || result.length === 0) return null;
   return (
-    <div className="regex-result" aria-label="Regex matches">
+    <div className="regex-result">
       {result.map((item, index) => {
         if (item.type === 'text') {
           return <span key={index}>{item.value}</span>;
@@ -12,6 +12,7 @@ function RegexResult({ result }) {
             <span
               key={index}
               tabIndex="0"
+              aria-label={`Match: ${item.match}`}
               id={JSON.stringify({
                 match: item.match,
                 start: item.start,
