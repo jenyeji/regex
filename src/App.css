@@ -54,15 +54,7 @@ select:focus {
   text-align: left;
   border: 1px solid gray;
   padding: 8px;
-  overflow: scroll;
-}
-
-.regex-list-result {
-  text-align: left;
-  border: 1px solid gray;
-  padding: 8px;
-  margin-top: 18px;
-  height: 200px;
+  word-wrap: break-word;
   overflow: scroll;
 }
 
@@ -97,12 +89,20 @@ select:focus {
 .share {
   margin-top: 12px;
   text-align: left;
+  max-height: 20vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.share-button {
+  width: fit-content;
 }
 
 .share-url {
   padding: 12px;
   word-wrap: break-word;
   font-size: small;
+  overflow: scroll;
 }
 
 .share-url a {
