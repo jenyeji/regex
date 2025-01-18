@@ -40,6 +40,13 @@ select:focus {
   max-height: 80vh;
 }
 
+.input-error {
+  color: red;
+  font-size: 0.8em;
+  margin-top: 4px;
+  height: 18px;
+}
+
 .regex-input {
   display: flex;
   text-align: left;

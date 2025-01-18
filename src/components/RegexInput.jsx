@@ -15,6 +15,9 @@ function RegexInput({ pattern, flags, error, onRegexUpdate, onFlagUpdate }) {
             onRegexUpdate(e.target.value);
           }}
         />
+        <div className="input-error">
+          {error ? `Input Error: ${error}` : ''}
+        </div>
       </label>
       <FlagsInput flags={flags} onFlagUpdate={onFlagUpdate} />
     </div>
