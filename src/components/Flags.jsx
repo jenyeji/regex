@@ -27,6 +27,7 @@ function FlagsInput({ flags, onFlagUpdate }) {
   const FLAGS = [
     { label: 'global', flag: 'g' },
     { label: 'case insensitive', flag: 'i' },
+    { label: 'multiline', flag: 'm' },
     { label: 'single line', flag: 's' },
     { label: 'unicode', flag: 'u' },
     { label: 'sticky', flag: 'y' },

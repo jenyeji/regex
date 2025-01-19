@@ -4,8 +4,21 @@ import LZString from 'lz-string';
 const initialState = {
   pattern: '[A-Z]',
   flags: 'g',
-  testString:
-    'This is a simplified version of RegExr.com, developed by Jennifer Suratna. You can modify the text or regex pattern and select any combination of flags.',
+  testString: `This is a simplified version of RegExr.com, developed by Jennifer Suratna. You can modify the text or regex pattern and select any combination of flags.
+
+Examples:
+
+Email matching:
+- pattern: [a-z0-9!#$%&'*+/=?^_\`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_\`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?
+- flags: global
+
+test@gmail.com
+
+Phone number:
+- pattern: ^\\s*(?:\\+?(\\d{1,3}))?([-. (]*(\\d{3})[-. )]*)?((\\d{3})[-. ]*(\\d{2,4})(?:[-.x ]*(\\d+))?)\\s*$
+- flags: global, multiline
+
+123-456-7890`,
   result: null,
   error: null,
   shareUrl: null,
