@@ -10,12 +10,14 @@ function RegexInput({ pattern, flags, error, onRegexUpdate, onFlagUpdate }) {
           type="text"
           name="regex-pattern"
           value={pattern}
+          aria-describedby="input-error"
+          aria-invalid={error ? 'true' : 'false'}
           style={{ color: error ? 'red' : 'black' }}
           onChange={(e) => {
             onRegexUpdate(e.target.value);
           }}
         />
-        <div className="input-error">
+        <div className="input-error" id="input-error" role="alert">
           {error ? `Input Error: ${error}` : ''}
         </div>
       </label>
