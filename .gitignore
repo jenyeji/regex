@@ -23,5 +23,4 @@ dist-ssr
 *.sln
 *.sw?
 .vercel
-vite.config.js
 eslint.config.js
