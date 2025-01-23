@@ -128,7 +128,6 @@ select:focus {
   overflow-wrap: break-word;
   word-break: break-all;
   font-size: small;
-  overflow: scroll;
 }
 
 .share-url a {

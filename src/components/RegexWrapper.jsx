@@ -14,6 +14,7 @@ import RegexResult from './RegexResult';
 import RegexTestString from './RegexTestString';
 import RegexShare from './RegexShare';
 import useDebounce from '../hooks/useDebounce';
+import ModalDialog from './ModalDialog/ModalDialog';
 
 export default function RegexWrapper() {
   const dispatch = useDispatch();
@@ -105,6 +106,18 @@ export default function RegexWrapper() {
         origin={window.location.origin}
         onShare={(val) => dispatch(setShareUrl(val))}
       />
+      <ModalDialog
+        title="Share Your Link"
+        customStyles={['share-url']}
+        isOpen={shareUrl}
+        showCloseButton={true}
+        onClose={() => dispatch(setShareUrl(null))}
+      >
+        This URL captures and preserves the current state of the Regex app:{' '}
+        <a href={`${origin}?json=${shareUrl}`}>
+          {`${origin}?json=${shareUrl}`}
+        </a>
+      </ModalDialog>
     </div>
   );
 }
