@@ -5,6 +5,7 @@ function RegexShare({ shareUrl, pattern, flags, testString, origin, onShare }) {
     <div className="share">
       <button
         aria-label="Share this page"
+        disabled={shareUrl !== null}
         className="share-button"
         onClick={() => {
           const data = {
@@ -26,14 +27,6 @@ function RegexShare({ shareUrl, pattern, flags, testString, origin, onShare }) {
       >
         Share
       </button>
-      {shareUrl && (
-        <div className="share-url">
-          This URL captures and preserves the current state of the Regex app:{' '}
-          <a href={`${origin}?json=${shareUrl}`}>
-            {`${origin}?json=${shareUrl}`}
-          </a>
-        </div>
-      )}
     </div>
   );
 }

@@ -123,12 +123,10 @@ select:focus {
 }
 
 .share-url {
-  padding: 12px;
   word-wrap: break-word;
   overflow-wrap: break-word;
   word-break: break-all;
   font-size: small;
-  overflow: scroll;
 }
 
 .share-url a {
