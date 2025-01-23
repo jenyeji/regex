@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import DOMPurify from 'dompurify';
 import {
   updatePattern,
   updateFlags,
@@ -90,12 +91,16 @@ export default function RegexWrapper() {
         pattern={pattern}
         flags={flags}
         error={error}
-        onRegexUpdate={(val) => dispatch(updatePattern(val))}
-        onFlagUpdate={(val) => dispatch(updateFlags(val))}
+        onRegexUpdate={(val) =>
+          dispatch(updatePattern(DOMPurify.sanitize(val)))
+        }
+        onFlagUpdate={(val) => dispatch(updateFlags(DOMPurify.sanitize(val)))}
       />
       <RegexTestString
         testString={testString}
-        onTestStringUpdate={(val) => dispatch(updateTestString(val))}
+        onTestStringUpdate={(val) =>
+          dispatch(updateTestString(DOMPurify.sanitize(val)))
+        }
       />
       <RegexResult result={result} />
       <RegexShare

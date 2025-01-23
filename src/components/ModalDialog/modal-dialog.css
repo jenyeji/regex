@@ -11,12 +11,10 @@
 }
 
 .modal-dialog {
-  aspect-ratio: 2 / 1;
   border-radius: 18px;
   border: 1px solid lightgray;
   background-color: inherit;
   padding: 24px;
-  width: 500px;
 
   display: flex;
   flex-direction: column;

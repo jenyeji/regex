@@ -2,6 +2,7 @@ import './modal-dialog.css';
 
 function ModalDialog({
   customStyles = [],
+  width = '600px',
   title,
   isOpen,
   onClose,
@@ -21,12 +22,13 @@ function ModalDialog({
         aria-labelledby="dialogTitle"
         aria-describedby="dialogDesc"
         className={`modal-dialog ${customStyles.join(' ')}`}
+        style={{ width }}
       >
         <div className="modal-header">
           <h2 id="dialogTitle" className="modal-title">
             {title}
           </h2>
-          {showCloseButton && <button onClick={onClose}>X</button>}
+          <button onClick={onClose}>X</button>
         </div>
         <div id="dialogDesc" className="modal-content">
           {children}
