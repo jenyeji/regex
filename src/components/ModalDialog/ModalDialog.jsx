@@ -15,16 +15,22 @@ function ModalDialog({
 
   return (
     <div className="modal-dialog-overlay">
-      <div className={`modal-dialog ${customStyles.join(' ')}`}>
+      <div
+        role="alertdialog"
+        aria-modal="true"
+        aria-labelledby="dialogTitle"
+        aria-describedby="dialogDesc"
+        className={`modal-dialog ${customStyles.join(' ')}`}
+      >
         <div className="modal-header">
-          <span className="modal-title">{title}</span>
-          {showCloseButton && (
-            <span>
-              <button onClick={onClose}>X</button>
-            </span>
-          )}
+          <h2 id="dialogTitle" className="modal-title">
+            {title}
+          </h2>
+          {showCloseButton && <button onClick={onClose}>X</button>}
         </div>
-        <div className="modal-content">{children}</div>
+        <div id="dialogDesc" className="modal-content">
+          {children}
+        </div>
         <div className="modal-footer">
           {showCloseButton && <button onClick={onClose}>Close</button>}
           {showCTA && <button onClick={onSubmitCTA}>{CTAlabel}</button>}

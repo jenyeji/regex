@@ -114,7 +114,7 @@ export default function RegexWrapper() {
         onClose={() => dispatch(setShareUrl(null))}
       >
         This URL captures and preserves the current state of the Regex app:{' '}
-        <a href={`${origin}?json=${shareUrl}`}>
+        <a href={`${origin}?json=${shareUrl}`} aria-label="Share Regex Link">
           {`${origin}?json=${shareUrl}`}
         </a>
       </ModalDialog>
