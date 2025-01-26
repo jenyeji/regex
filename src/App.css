@@ -57,10 +57,8 @@ select:focus {
 }
 
 .input-error {
-  color: red;
   font-size: 0.8em;
-  margin-top: 4px;
-  min-height: 18px;
+  margin-top: 6px;
 }
 
 .regex-input {
@@ -131,4 +129,41 @@ select:focus {
 
 .share-url a {
   color: lightblue;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  border: 1px solid red;
+  background-color: red;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+
+  position: absolute;
+  z-index: 1;
+
+  width: 100%;
+  top: 100%;
+  left: 50%;
+  margin-left: -50%;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+}
+
+.tooltip .tooltiptext::after {
+  content: ' ';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent red transparent;
 }
