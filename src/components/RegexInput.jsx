@@ -11,11 +11,10 @@ function RegexInput({ pattern, flags, error, onRegexUpdate, onFlagUpdate }) {
           <input
             type="text"
             name="regex-pattern"
-            className="tooltip"
+            className={`tooltip regex-pattern ${error ? 'error' : ''}`}
             value={pattern}
             aria-describedby="input-error"
             aria-invalid={error ? 'true' : 'false'}
-            style={{ color: error ? 'red' : 'black' }}
             onChange={(e) => {
               onRegexUpdate(e.target.value);
             }}

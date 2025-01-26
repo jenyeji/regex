@@ -68,6 +68,14 @@ select:focus {
   align-items: center;
 }
 
+.regex-pattern {
+  color: black;
+}
+
+.regex-pattern.error {
+  color: red;
+}
+
 .regex-test-string {
   margin: 12px 0;
 }
