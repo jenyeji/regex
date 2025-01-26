@@ -1,4 +1,5 @@
 import FlagsInput from './Flags';
+import Tooltip from './Tooltip/Tooltip';
 
 function RegexInput({ pattern, flags, error, onRegexUpdate, onFlagUpdate }) {
   return (
@@ -20,13 +21,13 @@ function RegexInput({ pattern, flags, error, onRegexUpdate, onFlagUpdate }) {
             }}
           />
           {error && (
-            <span
-              className="input-error tooltiptext"
+            <Tooltip
+              customClasses={['input-error']}
               id="input-error"
               role="alert"
             >
               ⚠️ Input Error: ${error}
-            </span>
+            </Tooltip>
           )}
         </span>
       </label>
