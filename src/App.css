@@ -57,16 +57,23 @@ select:focus {
 }
 
 .input-error {
-  color: red;
   font-size: 0.8em;
-  margin-top: 4px;
-  min-height: 18px;
+  margin-top: 6px;
 }
 
 .regex-input {
   display: flex;
   text-align: left;
   justify-content: space-between;
+  align-items: center;
+}
+
+.regex-pattern {
+  color: black;
+}
+
+.regex-pattern.error {
+  color: red;
 }
 
 .regex-test-string {

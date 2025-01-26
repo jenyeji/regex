@@ -1,4 +1,5 @@
 import FlagsInput from './Flags';
+import Tooltip from './Tooltip/Tooltip';
 
 function RegexInput({ pattern, flags, error, onRegexUpdate, onFlagUpdate }) {
   return (
@@ -6,20 +7,28 @@ function RegexInput({ pattern, flags, error, onRegexUpdate, onFlagUpdate }) {
       <label>
         {' '}
         Regex Pattern{' '}
-        <input
-          type="text"
-          name="regex-pattern"
-          value={pattern}
-          aria-describedby="input-error"
-          aria-invalid={error ? 'true' : 'false'}
-          style={{ color: error ? 'red' : 'black' }}
-          onChange={(e) => {
-            onRegexUpdate(e.target.value);
-          }}
-        />
-        <div className="input-error" id="input-error" role="alert">
-          {error ? `Input Error: ${error}` : ''}
-        </div>
+        <span className="tooltip">
+          <input
+            type="text"
+            name="regex-pattern"
+            className={`tooltip regex-pattern ${error ? 'error' : ''}`}
+            value={pattern}
+            aria-describedby="input-error"
+            aria-invalid={error ? 'true' : 'false'}
+            onChange={(e) => {
+              onRegexUpdate(e.target.value);
+            }}
+          />
+          {error && (
+            <Tooltip
+              customClasses={['input-error']}
+              id="input-error"
+              role="alert"
+            >
+              ⚠️ Input Error: ${error}
+            </Tooltip>
+          )}
+        </span>
       </label>
       <FlagsInput flags={flags} onFlagUpdate={onFlagUpdate} />
     </div>
