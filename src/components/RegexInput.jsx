@@ -5,13 +5,12 @@ function RegexInput({ pattern, flags, error, onRegexUpdate, onFlagUpdate }) {
   return (
     <div className="regex-input">
       <label>
-        {' '}
         Regex Pattern{' '}
         <span className="tooltip">
           <input
             type="text"
             name="regex-pattern"
-            className={`tooltip regex-pattern ${error ? 'error' : ''}`}
+            className={`regex-pattern ${error && 'error'}`}
             value={pattern}
             aria-describedby="input-error"
             aria-invalid={error ? 'true' : 'false'}
